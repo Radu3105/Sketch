@@ -16,15 +16,17 @@
                 <div id="menu">
                     <div>
                         <p>Choose Brush Color</p>
-                        <input type="color">
+                        <input id="brush-color" type="color">
                     </div>
                     <div>
                         <p>Choose Background Color</p>
-                        <input type="color">
+                        <input id="background-color" type="color">
                     </div>
-                    <button>Brush Mode</button>
-                    <button>Rainbow Mode</button>
-                    <button>Eraser Mode</button>
+                    <div id="modes">
+                        <button id="brush">Brush Mode</button>
+                        <button id="rainbow">Rainbow Mode</button>
+                        <button id="eraser">Eraser Mode</button>
+                    </div>
                     <label>
                         <p id="canvas-size">Canvas Size: 16 x 16</p>
                         <input id="size-slider" type="range" min="4" max="64", value="16">

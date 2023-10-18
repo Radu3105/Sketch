@@ -91,6 +91,7 @@ select {
     height: 100%;
     background-color: gray;
     margin: auto;
+    border: 2px solid black;
 }
 
 #menu {
@@ -142,4 +143,8 @@ select {
 
 #title {
     text-align: center;
+}
+
+.active {
+    background-color: aquamarine;
 }
