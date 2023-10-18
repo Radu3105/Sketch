@@ -2,15 +2,18 @@ const canvas = document.querySelector('#canvas');
 const sizeSlider = document.querySelector('#size-slider');
 const modes = document.querySelector('#modes');
 const brushColor = document.querySelector('#brush-color');
+const backgroundColor = document.querySelector('#background-color');
 
 let selectedBrushMode = 'brush';
 let selectedBrushColor = 'black';
+let selectedBackgroundColor = 'white';
 let mouseDown = false;
 
 document.body.onmousedown = () => (mouseDown = true)
 document.body.onmouseup = () => (mouseDown = false)
 
 function generateCanvas(size) {
+    canvas.style.backgroundColor = selectedBackgroundColor;
     for (let i = 0; i < size; i++) {
         const row = document.createElement('div');
         row.setAttribute('class', 'row');
@@ -63,7 +66,7 @@ function selectBrushMode() {
             selectedBrushColor = 'pink';
             break;
         case 'eraser':
-            selectedBrushColor = 'white';
+            selectedBrushColor = selectedBackgroundColor;
             break;
         case 'brush':
             selectedBrushColor = brushColor.value;
@@ -86,6 +89,11 @@ brushColor.addEventListener('change', () => {
     if (selectedBrushMode === 'brush') {
         selectBrushMode();
     }
+});
+
+backgroundColor.addEventListener('change', () => {
+    selectedBackgroundColor = backgroundColor.value;
+    canvas.style.backgroundColor = selectedBackgroundColor;
 });
 
 generateCanvas(sizeSlider.value);
