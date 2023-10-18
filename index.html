@@ -4,11 +4,34 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./styles.css">
-        <script src="./index.html" defer></script>
-        <title>Etch a Sketch</title>
+        <script src="./main.js" defer></script>
+        <title>Etch-a-Sketch</title>
     </head>
 
     <body>
-        <h1>Etch a Sketch</h1>    
+        <div id="app">
+            <h1 id="title">Etch-a-Sketch</h1>
+            <div class="divider-100"></div>
+            <div id="main-container">
+                <div id="menu">
+                    <div>
+                        <p>Choose Brush Color</p>
+                        <input type="color">
+                    </div>
+                    <div>
+                        <p>Choose Background Color</p>
+                        <input type="color">
+                    </div>
+                    <button>Brush Mode</button>
+                    <button>Rainbow Mode</button>
+                    <button>Eraser Mode</button>
+                    <label>
+                        <p id="canvas-size">Canvas Size: 16 x 16</p>
+                        <input id="size-slider" type="range" min="4" max="64", value="16">
+                    </label>
+                </div>
+                <div id="canvas"></div>
+            </div>
+        </div>    
     </body>
 </html>
