@@ -6,17 +6,19 @@ const modes = document.querySelector('#modes');
 const brushColor = document.querySelector('#brush-color');
 const backgroundColor = document.querySelector('#background-color');
 const clearBtn = document.querySelector('#clear-btn');
-// const toggleGrid = document.querySelector('#toggle-grid');
+const toggleGrid = document.querySelector('#toggle-grid');
 
 let selectedBrushMode = 'brush';
 let selectedBrushColor = 'black';
 let selectedBackgroundColor = 'white';
 let mouseDown = false;
+let gridToggle = true;
 
 document.body.onmousedown = () => (mouseDown = true)
 document.body.onmouseup = () => (mouseDown = false)
 
 function generateCanvas(size) {
+    console.log()
     canvas.style.backgroundColor = selectedBackgroundColor;
     for (let i = 0; i < size; i++) {
         const row = document.createElement('div');
@@ -87,9 +89,21 @@ function preventDragHandler(e) {
 
 
 
-// toggleGrid.addEventListener('click', () => {
-
-// });
+toggleGrid.addEventListener('click', () => {
+    gridToggle = !gridToggle;
+    for (let row of canvas.children) {
+        for (let cell of row.children) {
+            if (gridToggle) {
+                console.log("Set class");
+                cell.setAttribute('class', 'cell');
+            }
+            else {
+                console.log("Removed class");
+                cell.classList.remove('cell');
+            }
+        }
+    }
+});
 
 clearBtn.addEventListener('click', () => {
     resetCanvas();
