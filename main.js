@@ -1,3 +1,5 @@
+const RAINBOW_COLORS = ['dodgerblue', 'greenyellow', 'magenta', 'red', 'yellow', 'aqua', 'green', 'orange'];
+
 const canvas = document.querySelector('#canvas');
 const sizeSlider = document.querySelector('#size-slider');
 const modes = document.querySelector('#modes');
@@ -43,6 +45,9 @@ function updateCanvasSizeText() {
 
 function onMouseDown(event) {
     mouseDown = true;
+    if (selectedBrushMode === 'rainbow') {
+        selectedBrushColor = RAINBOW_COLORS[Math.floor(Math.random() * RAINBOW_COLORS.length)];
+    }
     event.target.style.backgroundColor = selectedBrushColor;
     console.log(event.target);
 }
@@ -54,6 +59,9 @@ function onMouseUp() {
 function onMouseOver(event) {
     if (mouseDown) {
         event.target.style.backgroundColor = selectedBrushColor;
+        if (selectedBrushMode === 'rainbow') {
+            selectedBrushColor = RAINBOW_COLORS[Math.floor(Math.random() * RAINBOW_COLORS.length)];
+        }
     }
 }
 
@@ -62,14 +70,11 @@ function selectBrushMode() {
     if (currentActive) currentActive.classList.remove('active');
 
     switch (selectedBrushMode) {
-        case 'rainbow':
-            selectedBrushColor = 'pink';
+        case 'brush':
+            selectedBrushColor = brushColor.value;
             break;
         case 'eraser':
             selectedBrushColor = selectedBackgroundColor;
-            break;
-        case 'brush':
-            selectedBrushColor = brushColor.value;
             break;
     }
 }
@@ -82,6 +87,11 @@ function preventDragHandler(e) {
 
 canvas.addEventListener('dragstart', preventDragHandler);
 
+sizeSlider.addEventListener('change', () => {
+    resetCanvas();
+    generateCanvas(sizeSlider.value);
+    updateCanvasSizeText();
+});
 
 modes.addEventListener('click', (event) => {
     if (event.target !== modes) {
@@ -104,9 +114,3 @@ backgroundColor.addEventListener('change', () => {
 });
 
 generateCanvas(sizeSlider.value);
-
-sizeSlider.addEventListener('change', () => {
-    resetCanvas();
-    generateCanvas(sizeSlider.value);
-    updateCanvasSizeText();
-});
