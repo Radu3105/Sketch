@@ -14,21 +14,33 @@
             <div class="divider-100"></div>
             <div id="main-container">
                 <div id="menu">
-                    <div class="menu-group-color">
-                        <p>Brush Color</p>
-                        <input id="brush-color" class="color-selector" type="color">
+                    <div class="brush-group">
+                        <h1>Brush Modes</h1>
+                        <div class="menu-group-color">
+                            <p>Brush Color</p>
+                            <input id="brush-color" class="color-selector" type="color">
+                        </div>
+                        
+                        <div id="modes">
+                            <button id="brush" class="active">Color</button>
+                            <button id="rainbow">Rainbow</button>
+                            <button id="eraser">Eraser</button>
+                        </div>
                     </div>
-                    <div class="menu-group-color">
-                        <p>Background Color</p>
-                        <input id="background-color" class="color-selector" type="color">
+                    <div class="canvas-group">
+                        <h1>Canvas</h1>
+                        <div class="menu-group-color">
+                            <p>Background Color</p>
+                            <input id="background-color" class="color-selector" type="color">
+                        </div>
+                        <!-- <div class="toggle">
+                            <p>Toggle Grid</p>
+                            <input id="toggle-grid" type="checkbox" checked>
+                        </div> -->
+                        <p id="canvas-size">Canvas Size: 16 x 16</p>
+                        <input id="size-slider" type="range" min="4" max="64", value="16">
+                        <button id="clear-btn">Clear</button>
                     </div>
-                    <div id="modes">
-                        <button id="brush" class="active">Brush Mode</button>
-                        <button id="rainbow">Rainbow Mode</button>
-                        <button id="eraser">Eraser Mode</button>
-                    </div>
-                    <p id="canvas-size">Canvas Size: 16 x 16</p>
-                    <input id="size-slider" type="range" min="4" max="64", value="16">
                 </div>
                 <div id="canvas"></div>
             </div>

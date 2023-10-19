@@ -5,6 +5,8 @@ const sizeSlider = document.querySelector('#size-slider');
 const modes = document.querySelector('#modes');
 const brushColor = document.querySelector('#brush-color');
 const backgroundColor = document.querySelector('#background-color');
+const clearBtn = document.querySelector('#clear-btn');
+// const toggleGrid = document.querySelector('#toggle-grid');
 
 let selectedBrushMode = 'brush';
 let selectedBrushColor = 'black';
@@ -84,6 +86,15 @@ function preventDragHandler(e) {
 }
 
 
+
+// toggleGrid.addEventListener('click', () => {
+
+// });
+
+clearBtn.addEventListener('click', () => {
+    resetCanvas();
+    generateCanvas(sizeSlider.value);
+});
 
 canvas.addEventListener('dragstart', preventDragHandler);
 
