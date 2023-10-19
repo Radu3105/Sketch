@@ -18,14 +18,18 @@ document.body.onmousedown = () => (mouseDown = true)
 document.body.onmouseup = () => (mouseDown = false)
 
 function generateCanvas(size) {
-    console.log()
     canvas.style.backgroundColor = selectedBackgroundColor;
     for (let i = 0; i < size; i++) {
         const row = document.createElement('div');
         row.setAttribute('class', 'row');
         for (let j = 0; j < size; j++) {
             const cell = document.createElement('div');
-            cell.setAttribute('class', 'cell');
+            if (gridToggle) {
+                cell.setAttribute('class', 'cell');
+            }
+            else {
+                cell.classList.remove('cell');
+            }
             cell.style.cssText = `width: ${canvas.offsetWidth / size}px; height: ${canvas.offsetHeight / size}px`;
             row.appendChild(cell);
             cell.addEventListener('mousedown', onMouseDown);
@@ -53,7 +57,6 @@ function onMouseDown(event) {
         selectedBrushColor = RAINBOW_COLORS[Math.floor(Math.random() * RAINBOW_COLORS.length)];
     }
     event.target.style.backgroundColor = selectedBrushColor;
-    console.log(event.target);
 }
 
 function onMouseUp() {
@@ -94,11 +97,9 @@ toggleGrid.addEventListener('click', () => {
     for (let row of canvas.children) {
         for (let cell of row.children) {
             if (gridToggle) {
-                console.log("Set class");
                 cell.setAttribute('class', 'cell');
             }
             else {
-                console.log("Removed class");
                 cell.classList.remove('cell');
             }
         }
