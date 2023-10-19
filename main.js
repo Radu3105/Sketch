@@ -74,6 +74,13 @@ function selectBrushMode() {
     }
 }
 
+function preventDragHandler(e) {
+    e.preventDefault();
+}
+
+
+
+canvas.addEventListener('dragstart', preventDragHandler);
 
 
 modes.addEventListener('click', (event) => {
